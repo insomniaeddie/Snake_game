@@ -7,7 +7,7 @@ import pygame, sys, random
 
 
 
-#def game_over(self):
+#def game_over(self) :
    #check if the snake if outside of the screen
 
    #check if snake hits itself 
