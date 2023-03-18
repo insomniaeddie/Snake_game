@@ -6,8 +6,9 @@ import random
 class SnakeGame:
     def __init__(self):
         # Set screen size
-        self.screen_width = 600
-        self.screen_length = 720
+        self.screen_width = 500
+        self.screen_length = 550
+        self.grid_size = 10
 
         # Initialize the pygame library
         pygame.init()
@@ -22,7 +23,7 @@ class SnakeGame:
         # Set the initial position and length of the snake
         self.snake_positionX = 20
         self.snake_positionY = 100
-        self.snake_size = 10
+        self.snake_size = self.grid_size
         self.snake_length = 1
         self.snake_blocks = []
 
@@ -31,9 +32,10 @@ class SnakeGame:
 
         # Set the initial position of the fruit
         self.fruit_positionX = random.randrange(
-            1, (self.screen_width // 10)) * 10
+            1, self.screen_width // self.grid_size) * self.grid_size
         self.fruit_positionY = random.randrange(
-            1, (self.screen_length // 10)) * 10
+            1, self.screen_length // self.grid_size) * self.grid_size
+        self.fruit_size = self.grid_size
         self.fruit_spawn = True
 
         # Set initial score
@@ -44,17 +46,17 @@ class SnakeGame:
     def handle_events(self):
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_UP:
+                if event.key == pygame.K_UP and self.y1_change != self.grid_size:
                     self.x1_change = 0
-                    self.y1_change = -10
-                elif event.key == pygame.K_DOWN:
+                    self.y1_change = -self.grid_size
+                elif event.key == pygame.K_DOWN and self.y1_change != -self.grid_size:
                     self.x1_change = 0
-                    self.y1_change = 10
-                elif event.key == pygame.K_LEFT:
-                    self.x1_change = -10
+                    self.y1_change = self.grid_size
+                elif event.key == pygame.K_LEFT and self.x1_change != self.grid_size:
+                    self.x1_change = -self.grid_size
                     self.y1_change = 0
-                elif event.key == pygame.K_RIGHT:
-                    self.x1_change = 10
+                elif event.key == pygame.K_RIGHT and self.x1_change != -self.grid_size:
+                    self.x1_change = self.grid_size
                     self.y1_change = 0
 
             if event.type == pygame.QUIT:
@@ -90,14 +92,14 @@ class SnakeGame:
             self.fruit_spawn = True
 
     def draw_snake(self):
-        self.screen.fill((0, 128, 0))
+        self.screen.fill((0, 0, 0))
         for block in self.snake_blocks:
-            pygame.draw.rect(self.screen, pygame.Color('blue'), pygame.Rect(
+            pygame.draw.rect(self.screen, pygame.Color('green'), pygame.Rect(
                 block[0], block[1], self.snake_size, self.snake_size))
         pygame.draw.rect(self.screen, pygame.Color('red'), pygame.Rect(
-            self.fruit_positionX, self.fruit_positionY, self.snake_size, self.snake_size))
+            self.fruit_positionX, self.fruit_positionY, self.fruit_size, self.fruit_size))
         pygame.display.update()
-        self.clock.tick(10)
+        self.clock.tick(15)
 
     def show_start_prompt(self):
         font = pygame.font.Font(None, 36)
