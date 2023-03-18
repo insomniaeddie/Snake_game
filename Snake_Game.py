@@ -89,6 +89,9 @@ class SnakeGame:
                 1, (self.screen_length // 10)) * 10
             self.snake_length += 1
 
+            # Increment the score
+            self.score += 1
+
             self.fruit_spawn = True
 
     def draw_snake(self):
@@ -98,6 +101,13 @@ class SnakeGame:
                 block[0], block[1], self.snake_size, self.snake_size))
         pygame.draw.rect(self.screen, pygame.Color('red'), pygame.Rect(
             self.fruit_positionX, self.fruit_positionY, self.fruit_size, self.fruit_size))
+
+        # Display the score during gameplay
+        font = pygame.font.Font(None, 24)
+        score_text = font.render(
+            "Score: " + str(self.score), True, (255, 255, 255))
+        self.screen.blit(score_text, (10, 10))
+
         pygame.display.update()
         self.clock.tick(15)
 
@@ -171,9 +181,9 @@ if __name__ == "__main__":
         game.show_start_prompt()
 
         while not game.game_over:  # Run the game until game_over is True
-            game.handle_events()   # Handle user events
-            game.update_snake()    # Update the snake position
-            game.draw_snake()      # Draw the snake and fruit on the screen
+            game.handle_events()
+            game.update_snake()
+            game.draw_snake()
 
         retry = game.game_over_prompt()
 
