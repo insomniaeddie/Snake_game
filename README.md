@@ -16,7 +16,7 @@ To install the game, follow these steps:
 
 2. Install the Pygame library using pip: 
 
-​     `pip install pygame`
+    `pip install pygame`
 
 3. Clone this repository: 
 
