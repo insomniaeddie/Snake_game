@@ -28,8 +28,10 @@ class SnakeGame:
         self.fruit_image = pygame.transform.scale(
             self.fruit_image, (self.grid_size, self.grid_size))
 
-        # Load the sound effect
+        # Load the sound effect and the BGM file
         self.eat_sound = pygame.mixer.Sound("Audio/Sound_food.wav")
+        pygame.mixer.music.load("Audio/Snake_music.wav")
+        pygame.mixer.music.play(loops=-1)
 
         # Set the initial position and length of the snake
         self.snake_positionX = 20
@@ -69,6 +71,8 @@ class SnakeGame:
                 elif event.key == pygame.K_RIGHT and self.x1_change != -self.grid_size:
                     self.x1_change = self.grid_size
                     self.y1_change = 0
+                elif event.key == pygame.K_m:
+                    self.toggle_music()
 
             if event.type == pygame.QUIT:
                 pygame.quit()
@@ -127,6 +131,13 @@ class SnakeGame:
 
         pygame.display.update()
         self.clock.tick(10)
+
+    # Toggles the background music on and off when the "M" key is pressed.
+    def toggle_music(self):
+        if pygame.mixer.music.get_busy():
+            pygame.mixer.music.stop()
+        else:
+            pygame.mixer.music.play(loops=-1)
 
     def show_start_prompt(self):
         font = pygame.font.Font(None, 36)
