@@ -59,7 +59,7 @@ class SnakeGame:
         # Set initial diffculty levl
         self.set_difficulty("easy")
 
-        # Set the clock tick based on the difficulty level
+    # Set the clock tick based on the difficulty level
     def set_difficulty(self, difficulty):
         self.difficulty = difficulty
         if self.difficulty == "easy":
