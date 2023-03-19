@@ -10,15 +10,26 @@ class SnakeGame:
         self.screen_length = 550
         self.grid_size = 20
 
-        # Initialize the pygame library
+        # Initialize the pygame library and mixer module
         pygame.init()
+        pygame.mixer.init()
 
         # Create a title for the game
         pygame.display.set_caption('Snake game by YC')
+
         # Set up the screen display
         self.clock = pygame.time.Clock()
         self.screen = pygame.display.set_mode(
             (self.screen_width, self.screen_length))
+
+        # Load and scale the fruit image
+        self.fruit_image = pygame.image.load(
+            "Images/fruit.png").convert_alpha()
+        self.fruit_image = pygame.transform.scale(
+            self.fruit_image, (self.grid_size, self.grid_size))
+
+        # Load the sound effect
+        self.eat_sound = pygame.mixer.Sound("Audio/Sound_food.wav")
 
         # Set the initial position and length of the snake
         self.snake_positionX = 20
@@ -93,6 +104,9 @@ class SnakeGame:
             # Increment the score
             self.score += 1
 
+            # Play the eat sound effect
+            self.eat_sound.play()
+
             self.fruit_spawn = True
 
     def draw_snake(self):
@@ -100,8 +114,10 @@ class SnakeGame:
         for block in self.snake_blocks:
             pygame.draw.rect(self.screen, (30, 150, 30), pygame.Rect(
                 block[0], block[1], self.snake_size, self.snake_size))
-        pygame.draw.rect(self.screen, pygame.Color('red'), pygame.Rect(
-            self.fruit_positionX, self.fruit_positionY, self.fruit_size, self.fruit_size))
+
+        # Draw the fruit image instead of the red rectangle
+        self.screen.blit(self.fruit_image,
+                         (self.fruit_positionX, self.fruit_positionY))
 
         # Display the score during gameplay
         font = pygame.font.Font(None, 24)
