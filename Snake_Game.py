@@ -132,7 +132,7 @@ class SnakeGame:
         pygame.display.update()
         self.clock.tick(10)
 
-    # Toggles the background music on and off when the "M" key is pressed.
+    # Toggles the background music on and off by pressing the "M" key
     def toggle_music(self):
         if pygame.mixer.music.get_busy():
             pygame.mixer.music.stop()
