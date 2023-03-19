@@ -110,7 +110,7 @@ class SnakeGame:
         self.screen.blit(score_text, (10, 10))
 
         pygame.display.update()
-        self.clock.tick(15)
+        self.clock.tick(10)
 
     def show_start_prompt(self):
         font = pygame.font.Font(None, 36)
