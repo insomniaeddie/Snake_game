@@ -4,7 +4,7 @@
 
 ## Description
 
-This is a simple snake game built using Python and the Pygame library. The game features a snake that grows in size as it eats fruits. The game also includes background music and sound effects.
+This is a simple snake game built using Python and the Pygame library. The game features a snake that grows in size as it eats fruits. The game has three difficulty levels (easy, medium and hard), it also includes background music and sound effects.
 
 
 
@@ -30,7 +30,13 @@ To install the game, follow these steps:
 
 Use the arrow keys to control the snake. 
 
+When the game starts, click on the desired difficulty level (easy, medium, or hard) to set the game speed. 
+
+If the  "Start New Game" is clicked, the game will be played in "easy" mode by default.
+
 Press the "M" key to toggle background music on and off. The game ends when the snake collides with itself or the screen borders. You can start a new game or exit the game when it's over.
+
+
 
 
 
