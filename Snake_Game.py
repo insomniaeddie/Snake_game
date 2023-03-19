@@ -6,8 +6,8 @@ import random
 class SnakeGame:
     def __init__(self):
         # Set screen size
-        self.screen_width = 500
-        self.screen_length = 550
+        self.screen_width = 600
+        self.screen_length = 650
         self.grid_size = 20
 
         # Initialize the pygame library and mixer module
@@ -55,6 +55,19 @@ class SnakeGame:
         self.score = 0
 
         self.game_over = False
+
+        # Set initial diffculty levl
+        self.set_difficulty("easy")
+
+        # Set the clock tick based on the difficulty level
+    def set_difficulty(self, difficulty):
+        self.difficulty = difficulty
+        if self.difficulty == "easy":
+            self.clock_tick = 10
+        elif self.difficulty == "medium":
+            self.clock_tick = 15
+        elif self.difficulty == "hard":
+            self.clock_tick = 25
 
     def handle_events(self):
         for event in pygame.event.get():
@@ -130,7 +143,7 @@ class SnakeGame:
         self.screen.blit(score_text, (10, 10))
 
         pygame.display.update()
-        self.clock.tick(10)
+        self.clock.tick(self.clock_tick)
 
     # Toggles the background music on and off by pressing the "M" key
     def toggle_music(self):
@@ -143,10 +156,32 @@ class SnakeGame:
         font = pygame.font.Font(None, 36)
 
         start_button = pygame.draw.rect(
-            self.screen, (255, 0, 0), (self.screen_width // 2 - 100, self.screen_length // 2, 200, 50))
+            self.screen, (255, 0, 0), (self.screen_width // 2 - 100, self.screen_length // 2-100, 200, 50))
         start_text = font.render("Start New Game", True, (255, 255, 255))
         start_text_rect = start_text.get_rect(center=start_button.center)
         self.screen.blit(start_text, start_text_rect)
+
+        # Add difficulty options
+        difficulty_buttons_y = self.screen_length // 2
+        button_width = 100
+
+        easy_button = pygame.draw.rect(
+            self.screen, (255, 0, 0), (self.screen_width // 2 - 3 * button_width // 2, difficulty_buttons_y, button_width, 50))
+        easy_text = font.render("Easy", True, (255, 255, 255))
+        easy_text_rect = easy_text.get_rect(center=easy_button.center)
+        self.screen.blit(easy_text, easy_text_rect)
+
+        medium_button = pygame.draw.rect(
+            self.screen, (255, 0, 0), (self.screen_width // 2 - button_width // 2, difficulty_buttons_y, button_width, 50))
+        medium_text = font.render("Medium", True, (255, 255, 255))
+        medium_text_rect = medium_text.get_rect(center=medium_button.center)
+        self.screen.blit(medium_text, medium_text_rect)
+
+        hard_button = pygame.draw.rect(
+            self.screen, (255, 0, 0), (self.screen_width // 2 + button_width // 2, difficulty_buttons_y, button_width, 50))
+        hard_text = font.render("Hard", True, (255, 255, 255))
+        hard_text_rect = hard_text.get_rect(center=hard_button.center)
+        self.screen.blit(hard_text, hard_text_rect)
 
         pygame.display.update()
 
@@ -161,6 +196,18 @@ class SnakeGame:
                     x, y = event.pos
 
                     if start_button.collidepoint(x, y):
+                        return
+
+                    if easy_button.collidepoint(x, y):
+                        self.set_difficulty("easy")
+                        return
+
+                    if medium_button.collidepoint(x, y):
+                        self.set_difficulty("medium")
+                        return
+
+                    if hard_button.collidepoint(x, y):
+                        self.set_difficulty("hard")
                         return
 
     def game_over_prompt(self):
