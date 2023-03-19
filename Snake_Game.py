@@ -8,7 +8,7 @@ class SnakeGame:
         # Set screen size
         self.screen_width = 500
         self.screen_length = 550
-        self.grid_size = 10
+        self.grid_size = 20
 
         # Initialize the pygame library
         pygame.init()
@@ -84,9 +84,10 @@ class SnakeGame:
 
         if self.snake_positionX == self.fruit_positionX and self.snake_positionY == self.fruit_positionY:
             self.fruit_positionX = random.randrange(
-                1, (self.screen_width // 10)) * 10
+                1, (self.screen_width // self.grid_size)) * self.grid_size
             self.fruit_positionY = random.randrange(
-                1, (self.screen_length // 10)) * 10
+                1, (self.screen_length // self.grid_size)) * self.grid_size
+
             self.snake_length += 1
 
             # Increment the score
@@ -95,9 +96,9 @@ class SnakeGame:
             self.fruit_spawn = True
 
     def draw_snake(self):
-        self.screen.fill((0, 0, 0))
+        self.screen.fill((40, 40, 40))
         for block in self.snake_blocks:
-            pygame.draw.rect(self.screen, pygame.Color('green'), pygame.Rect(
+            pygame.draw.rect(self.screen, (30, 150, 30), pygame.Rect(
                 block[0], block[1], self.snake_size, self.snake_size))
         pygame.draw.rect(self.screen, pygame.Color('red'), pygame.Rect(
             self.fruit_positionX, self.fruit_positionY, self.fruit_size, self.fruit_size))
