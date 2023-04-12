@@ -24,7 +24,16 @@ To install the game, follow these steps:
 
 4. Navigate to the repository folder and run the game
 
-   
+
+
+
+###### Running the Snake Game using Docker
+
+`docker pull insomniaeddie/snake_game:1.0`
+
+`docker run -it --rm insomniaeddie/snake_game:1.0`
+
+
 
 ## Usage 
 
