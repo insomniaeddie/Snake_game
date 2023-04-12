@@ -30,7 +30,7 @@ To install the game, follow these steps:
 
 
 
-##### Running the Snake Game using Docker
+#### Running the Snake Game using Docker
 
 ```
 docker pull insomniaeddie/snake_game:1.0
