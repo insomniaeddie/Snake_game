@@ -56,8 +56,9 @@ Press the "M" key to toggle background music on and off. The game ends when the 
 
 ### Demo
 
-<img src="Q:\NetOps\Python Learning\PythonCodes\Projects\Game menu.PNG" alt="Game menu" style="zoom: 50%;" />
+
+![Game menu](https://user-images.githubusercontent.com/49099173/231538625-945d6635-b2e0-4215-861d-83a1c47072b4.PNG)
+
+![Game screen](https://user-images.githubusercontent.com/49099173/231538658-9e257420-d087-4b25-93a1-cfcca958e651.PNG)
 
 
-
-<img src="Q:\NetOps\Python Learning\PythonCodes\Projects\Game screen.PNG" alt="Game screen" style="zoom: 50%;" />
