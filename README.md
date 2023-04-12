@@ -57,4 +57,5 @@ Press the "M" key to toggle background music on and off. The game ends when the 
 ### Demo
 
 
+![Game menu](https://user-images.githubusercontent.com/49099173/231541381-8b031436-4059-4b66-a22f-e9cce69e5aac.png)
 
