@@ -10,7 +10,7 @@ This is a simple snake game built using Python and the Pygame library. The game 
 
 ## Installation
 
-To install the game, follow these steps: 
+## To install the game, follow these steps: 
 
 1. Ensure you have Python 3.x installed. You can download it from [python.org](https://www.python.org/downloads/). 
 
@@ -54,5 +54,10 @@ Press the "M" key to toggle background music on and off. The game ends when the 
 
 
 
+### Demo
+
+<img src="Q:\NetOps\Python Learning\PythonCodes\Projects\Game menu.PNG" alt="Game menu" style="zoom: 50%;" />
 
 
+
+<img src="Q:\NetOps\Python Learning\PythonCodes\Projects\Game screen.PNG" alt="Game screen" style="zoom: 50%;" />
