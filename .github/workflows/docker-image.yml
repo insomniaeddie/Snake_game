@@ -1,0 +1,23 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Docker hub login
+    
+    
+    - name: Build and push the Docker image 
+    - uses: docker/build-push-action@v4
+      with:
+        push: true
+        tags: snake_game:latest
