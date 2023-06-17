@@ -33,11 +33,11 @@ This is a simple snake game built using Python and the Pygame library. The game 
 #### Or Running the Snake Game using Docker:
 
 ```
-docker pull insomniaeddie/snake_game:1.0
+docker pull insomniaeddie/snake_game:latest
 ```
 
 ```
-docker run -it --rm insomniaeddie/snake_game:1.0
+docker run -it --rm insomniaeddie/snake_game:latest
 ```
 
 
